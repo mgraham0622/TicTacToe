@@ -5,10 +5,14 @@
 using namespace std;
 
 void printGrid(char board[3][3]){
-  char top[5] = "XABC";
-  char row1 = '1';
-  char row2 = '2';
-  char row3 = '3';
+  char cap[12] = " --------- ";
+  char endrow[3] = " |";
+  char top[12] = "| X A B C |";
+  char row1[4] = "| 1";
+  char row2[4] = "| 2";
+  char row3[4] = "| 3";
+  char spacer = ' ';
+  cout << cap << endl;
   cout << top << endl;
   for (int i = 0; i <= 2; i++){
     switch(i){
@@ -23,10 +27,11 @@ void printGrid(char board[3][3]){
       break;
     }
     for (int n = 0; n <= 2; n++){
-      cout << board[i][n];
+      cout << spacer << board[i][n];
     }
-    cout << endl;
+    cout << endrow << endl;
   }
+  cout << cap << endl;
 }
 bool checkWin (char board[3][3]){
   return false;
