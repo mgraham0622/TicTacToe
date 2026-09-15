@@ -1,11 +1,13 @@
 # include <iostream>
 # include <cctype>
+# include <cstring>
 
 using namespace std;
 
 void printGrid(char board[3][3]){
 }
 bool checkWin (char board[3][3]){
+  return false;
 }
 // function to strip a string of whitespace and make it lowercase (copied from Palindrome)
 int strip(char (& input)[81]){
@@ -25,7 +27,7 @@ int strip(char (& input)[81]){
     // changes it to an ascII value for operations
     ch2 = static_cast<unsigned char>(ch1);
     // makes it lowercase if it is a letter or number
-    if isalnum(ch2){
+    if (isalnum(ch2)){
 	// makes it lowercase
 	ch2 = tolower(ch2);
 	// transforms it back into a character
@@ -44,7 +46,8 @@ void getInput(int (& move)[2]){
   char buffer[81] = "";
   int length;
   bool hasMove = false;
-  move = {0,0};
+  move[0] = 0;
+  move[1] = 1;
   while (hasMove == false){
     cout << "Enter your move (letter and number, no spaces. Ex: a1):";
     cin.get(buffer,11);
@@ -85,20 +88,17 @@ void getInput(int (& move)[2]){
 }
     
     
- 
-  
- 
- 
-}
+
 bool checkInput(char move[3], char board[3][3]){
-  
+  return false;
 }
 
 int main(){
   char board[3][3] = {
     {"","",""},
     {"","",""},
-    {"","",""}};
+    {"","",""}
+  };
   int move[2] = {0,0};
   
   cout << move << endl;
