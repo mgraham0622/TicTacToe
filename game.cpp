@@ -76,7 +76,7 @@ void getInput(int (& move)[2]){
 	move[0] = 3;
 	break;
       default:
-	cout << "Enter a valid move (1 letter a-c and 1 number 1-3)" << end;
+	cout << "Enter a valid move (1 letter a-c and 1 number 1-3)" << end;;
       }
     }
     if (move[0] == 0 or move[1] == 0){
@@ -95,9 +95,9 @@ bool checkInput(char move[3], char board[3][3]){
 
 int main(){
   char board[3][3] = {
-    {"","",""},
-    {"","",""},
-    {"","",""}
+    {'','',''},
+    {'','',''},
+    {'','',''}
   };
   int move[2] = {0,0};
   
