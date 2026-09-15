@@ -101,8 +101,8 @@ int main(){
   };
   int move[2] = {0,0};
   
-  cout << move << endl;
+  cout << move[0] << move[1] << endl;
   getInput(move);
-  cout << move << endl;
+  cout << move[0] << move[1] << endl;
     
 }
