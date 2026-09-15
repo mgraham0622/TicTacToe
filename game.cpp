@@ -5,6 +5,28 @@
 using namespace std;
 
 void printGrid(char board[3][3]){
+  char top[5] = "XABC";
+  char row1 = '1';
+  char row2 = '2';
+  char row3 = '3';
+  cout << top << endl;
+  for (int i = 0; i <= 2; i++){
+    switch(i){
+    case 0:
+      cout << row1;
+      break;
+    case 1:
+      cout << row2;
+      break;
+    case 2:
+      cout << row3;
+      break;
+    }
+    for (int n = 0; n <= 2; n++){
+      cout << board[i][n];
+    }
+    cout << endl;
+  }
 }
 bool checkWin (char board[3][3]){
   return false;
@@ -46,14 +68,14 @@ void getInput(int (& move)[2]){
   char buffer[81] = "";
   int length;
   bool hasMove = false;
-  move[0] = 0;
-  move[1] = 1;
+
   while (hasMove == false){
+    move[0] = 0;
+    move[1] = 0;
     cout << "Enter your move (letter and number, no spaces. Ex: a1):";
     cin.get(buffer,11);
     cin.ignore(9999999,'\n');
     strip(buffer);
-    
     for (int i = 0; i <= 1; i++){
       single = buffer[i];
       switch(single){
@@ -75,12 +97,10 @@ void getInput(int (& move)[2]){
       case 'c':
 	move[0] = 3;
 	break;
-      default:
-	cout << "Enter a valid move (1 letter a-c and 1 number 1-3)" << endl;
       }
     }
     if (move[0] == 0 or move[1] == 0){
-      cout << "Please enter a letter and a number as your move" << endl;
+      cout << "Please enter a valid move (1 letter and 1 number)" << endl;
     }else{
       hasMove = true;
     }
@@ -95,14 +115,13 @@ bool checkInput(char move[3], char board[3][3]){
 
 int main(){
   char board[3][3] = {
-    {' ',' ',' '},
-    {' ',' ',' '},
-    {' ',' ',' '}
+    {'_','_','_'},
+    {'_','_','_'},
+    {'_','_','_'}
   };
   int move[2] = {0,0};
   
-  cout << move[0] << move[1] << endl;
+  printGrid(board);
   getInput(move);
-  cout << move[0] << move[1] << endl;
     
 }
