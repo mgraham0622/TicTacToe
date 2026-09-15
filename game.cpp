@@ -39,37 +39,47 @@ int strip(char (& input)[81]){
   strcpy(input,temp);
   return 0;
 }
-void getInput(char (& move)[3]){
+void getInput(int (& move)[2]){
   unsigned char single;
   char buffer[81] = "";
   int length;
-  bool hasMove;
-  
-  cout << "Enter your move (letter and number, no spaces. Ex: a1):";
-  cin.get(buffer,11);
-  cin.ignore(9999999,'\n');
-  strip(buffer);
-  for (int i = 0; i < 2; i++){
-    single = buffer[0];
-    switch(single){
-    case '1':
-      move[0] = '1';
-      break;
-    case '2':
-      move[0] = '2';
-      break;
-    case '3':
-      move[0] = '3';
-      break;
-    case 'a':
-      move[0] = '1';
-      break;
-    case 'b':
-      move[0] = '2';
-    case 'c':
-      move[0] = '3';
-    default:
-      cout << "enter a valid move (1 letter a-c and 1 number 1-3)";
+  bool hasMove = false;
+  move = {0,0};
+  while (hasMove == false){
+    cout << "Enter your move (letter and number, no spaces. Ex: a1):";
+    cin.get(buffer,11);
+    cin.ignore(9999999,'\n');
+    strip(buffer);
+    
+    for (int i = 0; i <= 1; i++){
+      single = buffer[i];
+      switch(single){
+      case '1':
+	move[1] = 1;
+	break;
+      case '2':
+	move[1] = 2;
+	break;
+      case '3':
+	move[1] = 3;
+	break;
+      case 'a':
+	move[0] = 1;
+	break;
+      case 'b':
+	move[0] = 2;
+	break;
+      case 'c':
+	move[0] = 3;
+	break;
+      default:
+	cout << "Enter a valid move (1 letter a-c and 1 number 1-3)" << end;
+      }
+    }
+    if (move[0] == 0 or move[1] == 0){
+      cout << "Please enter a letter and a number as your move" << endl;
+    }else{
+      hasMove = true;
     }
   }
 }
@@ -89,8 +99,10 @@ int main(){
     {"","",""},
     {"","",""},
     {"","",""}};
-  char move[81];
-
-
+  int move[2] = {0,0};
+  
+  cout << move << endl;
+  getInput(move);
+  cout << move << endl;
     
 }
