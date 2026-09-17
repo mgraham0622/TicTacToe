@@ -5,14 +5,11 @@
 using namespace std;
 
 void printGrid(char board[3][3]){
-  char cap[12] = " --------- ";
-  char endrow[3] = " |";
-  char top[12] = "| X A B C |";
-  char row1[4] = "| 1";
-  char row2[4] = "| 2";
-  char row3[4] = "| 3";
+  char top[8] = "X A B C";
+  char row1 = '1';
+  char row2 = '2';
+  char row3 = '3';
   char spacer = ' ';
-  cout << cap << endl;
   cout << top << endl;
   for (int i = 0; i <= 2; i++){
     switch(i){
@@ -29,9 +26,8 @@ void printGrid(char board[3][3]){
     for (int n = 0; n <= 2; n++){
       cout << spacer << board[i][n];
     }
-    cout << endrow << endl;
+    cout << endl;
   }
-  cout << cap << endl;
 }
 bool checkWin (char board[3][3]){
   return false;
@@ -51,14 +47,10 @@ int strip(char (& input)[81]){
   for (int i = 0; i < length; i++){
     // gets individual character
     ch1 = input[i];
-    // changes it to an ascII value for operations
-    ch2 = static_cast<unsigned char>(ch1);
     // makes it lowercase if it is a letter or number
-    if (isalnum(ch2)){
+    if (isalnum(ch1)){
 	// makes it lowercase
-	ch2 = tolower(ch2);
-	// transforms it back into a character
-	ch1 = static_cast<char>(ch2);
+	ch1 = tolower(ch1);
 	// adds character to the temp string
 	strncat(temp,&ch1,1);
       }
@@ -79,12 +71,10 @@ void getInput(int (& move)[2]){
     move[0] = 0;
     move[1] = 0;
     cout << "Enter your move (letter and number, no spaces. Ex: a1):";
-    cin.ignore(9999999,'\n');
-    cin.get(buffer,11);
-    cin.ignore(9999999,'\n');
+    cin.getline(buffer,80);
     strip(buffer);
     if (strlen(buffer) < 2){
-      buffer = noMove
+      strncat(buffer,noMove,2);
     }
     for (int i = 0; i <= 1; i++){
       single = buffer[i];
@@ -119,7 +109,7 @@ void getInput(int (& move)[2]){
     
     
 
-bool checkInput(char move[3], char board[3][3]){
+bool useInput(char move[3], char board[3][3]){
   return false;
 }
 
@@ -130,6 +120,7 @@ int main(){
     {'_','_','_'}
   };
   int move[2] = {0,0};
+  int player = 1;
   
   printGrid(board);
   getInput(move);
