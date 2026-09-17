@@ -60,7 +60,7 @@ int strip(char (& input)[81]){
   strcpy(input,temp);
   return 0;
 }
-void getInput(int (& move)[2]){
+void getInput(int (& move)[2], char board[3][3]){
   unsigned char single;
   char buffer[81] = "";
   int length;
@@ -73,7 +73,6 @@ void getInput(int (& move)[2]){
     cout << "Enter your move (letter and number, no spaces. Ex: a1):";
     cin.getline(buffer,80);
     strip(buffer);
-    cout << buffer;
     if (strlen(buffer) < 2){
       strncat(buffer,noMove,2);
     }
@@ -101,18 +100,14 @@ void getInput(int (& move)[2]){
       }
     }
     if (move[0] == 0 or move[1] == 0){
-      cout << "Please enter a valid move (1 letter and 1 number)" << endl;
+      cout << "Please enter a valid move (1 letter a-c and 1 number 1-3)" << endl;
     }else{
       hasMove = true;
     }
   }
 }
-    
-    
 
-bool useInput(char move[3], char board[3][3]){
-  return false;
-}
+
 
 int main(){
   char board[3][3] = {
