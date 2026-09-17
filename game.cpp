@@ -73,6 +73,7 @@ void getInput(int (& move)[2]){
     cout << "Enter your move (letter and number, no spaces. Ex: a1):";
     cin.getline(buffer,80);
     strip(buffer);
+    cout << buffer;
     if (strlen(buffer) < 2){
       strncat(buffer,noMove,2);
     }
