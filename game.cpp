@@ -73,14 +73,19 @@ void getInput(int (& move)[2]){
   char buffer[81] = "";
   int length;
   bool hasMove = false;
+  char noMove[3] = "zz";
 
   while (hasMove == false){
     move[0] = 0;
     move[1] = 0;
     cout << "Enter your move (letter and number, no spaces. Ex: a1):";
+    cin.ignore(9999999,'\n');
     cin.get(buffer,11);
     cin.ignore(9999999,'\n');
     strip(buffer);
+    if (strlen(buffer) < 2){
+      buffer = noMove
+    }
     for (int i = 0; i <= 1; i++){
       single = buffer[i];
       switch(single){
