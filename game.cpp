@@ -100,11 +100,13 @@ void getInput(int (& move)[2], char (& board)[3][3],char player) {
 	int length;
 	bool hasMove = false;
 	char noMove[3] = "zz";
-
+	char dialogue1[56] = "Enter your move (letter and number, no spaces. Ex: a1):";
+	char dialogue2[58] = "Please enter a valid move (1 letter a-c and 1 number 1-3)";
+	char dialogue3[18] = "Move is Not valid" ;
 	while (hasMove == false) {
 		move[0] = -1;
 		move[1] = -1;
-		cout << "Enter your move (letter and number, no spaces. Ex: a1):";
+		cout << dialogue1;
 		cin.getline(buffer,80);
 		strip(buffer);
 		if (strlen(buffer) < 2) {
@@ -134,13 +136,13 @@ void getInput(int (& move)[2], char (& board)[3][3],char player) {
 			}
 		}
 		if (move[0] == -1 or move[1] == -1) {
-			cout << "Please enter a valid move (1 letter a-c and 1 number 1-3)" << endl;
+			cout << dialogue2 << endl;
 		} else {
 			if (board[move[0]][move[1]] == '_') {
 				board[move[0]][move[1]] = player;
 				hasMove = true;
 			} else {
-				cout << "Move is Not valid" << endl;
+				cout << dialogue3 << endl;
 			}
 		}
 	}
@@ -152,6 +154,10 @@ int main() {
 		{'_','_','_'},
 		{'_','_','_'}
 	};
+	char dialogue1[17] = "Current Player: ";
+	char dialogue2[8] = "player ";
+	char dialogue3[25] = " wins! Play again?(y/n):";
+	char dialogue4[21] = "enter a valid input:";
 	char player = '_';
 	char input = ' ';
 	int move[2] = {-1,-1};
@@ -172,12 +178,12 @@ int main() {
 				player = 'X';
 				playerNum = 1;
 			}
-			cout << "Current Player: " << player << endl;
+			cout << dialogue1 << player << endl;
 			printGrid(board);
 			getInput(move,board,player);
 			won = checkWin(board,player);
 		}
-		cout << "player " << playerNum << " wins! Play again?(y/n):";
+		cout << dialogue2 << playerNum << dialogue3;
 		hasInput = false;
 		while (!hasInput) {
 			cin >> input;
@@ -195,7 +201,7 @@ int main() {
 				hasInput = true;
 				playing = false;
 			} else {
-				cout << "enter a valid input:";
+				cout << dialogue4;
 			}
 		}
 	}
