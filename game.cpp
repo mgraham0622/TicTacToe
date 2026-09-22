@@ -86,7 +86,7 @@ int strip(char (& input)[81]){
   strcpy(input,temp);
   return 0;
 }
-void getInput(int (& move)[2], char board[3][3]){
+void getInput(int (& move)[2], char (& board)[3][3],char player){
   unsigned char single;
   char buffer[81] = "";
   int length;
@@ -129,6 +129,7 @@ void getInput(int (& move)[2], char board[3][3]){
       cout << "Please enter a valid move (1 letter a-c and 1 number 1-3)" << endl;
     }else{
       if (board[move[0]][move[1]] == '_'){
+	board[move[0]][move[1]] = 
 	hasMove = true;
       } else {
 	cout << "Move is Not valid" << endl;
@@ -139,7 +140,7 @@ void getInput(int (& move)[2], char board[3][3]){
 
 int main(){
   char board[3][3] = {
-    {'X','O','_'},
+    {'_','_','_'},
     {'_','_','_'},
     {'_','_','_'}
   };
@@ -155,8 +156,9 @@ int main(){
       case 2:
 	player = 'O'
       }
+      printGrid(board);
+      getInput(move,board);
+      
     }
-    printGrid(board);
-    getInput(move,board);
   }
 }
