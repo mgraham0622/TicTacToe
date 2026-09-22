@@ -129,8 +129,8 @@ void getInput(int (& move)[2], char (& board)[3][3],char player){
       cout << "Please enter a valid move (1 letter a-c and 1 number 1-3)" << endl;
     }else{
       if (board[move[0]][move[1]] == '_'){
-	board[move[0]][move[1]] = 
-	hasMove = true;
+		board[move[0]][move[1]] = player;
+		hasMove = true;
       } else {
 	cout << "Move is Not valid" << endl;
       }
@@ -154,11 +154,11 @@ int main(){
 	player = 'X';
 	break;
       case 2:
-	player = 'O'
+	player = 'O';
       }
       printGrid(board);
-      getInput(move,board);
-      
+      getInput(move,board,player);
+      won = checkwin(board,player)
     }
   }
 }
