@@ -151,10 +151,10 @@ int main(){
     for (int i = 1; i < 3; i++){
       switch(i){
       case 1:
-	player = 'X';
-	break;
+		player = 'X';
+		break;
       case 2:
-	player = 'O';
+		player = 'O';
       }
       printGrid(board);
       getInput(move,board,player);
