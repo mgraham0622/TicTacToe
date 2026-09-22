@@ -1,3 +1,11 @@
+/******************************************************************************
+
+Welcome to GDB Online.
+  GDB online is an online compiler and debugger tool for C, C++, Python, PHP, Ruby,
+  C#, OCaml, VB, Perl, Swift, Prolog, Javascript, Pascal, COBOL, HTML, CSS, JS
+  Code, Compile, Run and Debug online from anywhere in world.
+
+*******************************************************************************/
 # include <iostream>
 # include <cctype>
 # include <cstring>
@@ -177,7 +185,7 @@ int main() {
 			getInput(move,board,player);
 			won = checkWin(board,player);
 		}
-		cout << "player: " << playerNum << " wins! Play again?(y/n):";
+		cout << "player " << playerNum << " wins! Play again?(y/n):";
 		hasInput = false;
 		while (!hasInput) {
 			cin >> input;
@@ -186,11 +194,11 @@ int main() {
 				hasInput = true;
 				for (int i = 0; i <= 2; i++) {
 					for (int k = 0; k <= 2; k++) {
-						board[i][k] = '_'
+						board[i][k] = '_';
 					}
 				}
-				player = '_'
-				         won = false;
+				player = '_';
+				won = false;
 			} else if (tolower(input) == 'n') {
 				hasInput = true;
 				playing = false;
