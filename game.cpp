@@ -158,7 +158,7 @@ int main(){
       }
       printGrid(board);
       getInput(move,board,player);
-      won = checkwin(board,player)
+      won = checkWin(board,player);
     }
   }
 }
