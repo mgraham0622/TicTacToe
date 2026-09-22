@@ -29,7 +29,33 @@ void printGrid(char board[3][3]){
     cout << endl;
   }
 }
-bool checkWin (char board[3][3]){
+bool checkWin (char board[3][3], char player){
+  int inrow = 0;
+  int incol = 0;
+  int pdiag = 0;
+  int ndiag = 0;
+  for (int i = 0; i<3; i++){
+    inrow = 0;
+    incol = 0;
+    if (board[i][i] == player){
+      pdiag += 1;
+      if (pdiag == 3){return true;}
+    }
+    if (board[i][2-i] == player){
+      ndiag += 1;
+      if (ndiag == 3){return true;}
+    }
+    for (int k = 0; k<3; k++){
+      if (board[i][k] == player){
+	inrow += 1;
+	if (inrow == 3){return true;}
+      }
+      if (board[k][i] == player){
+	incol += 1;
+	if (incol == 3){return true;}
+      }
+    }
+  }
   return false;
 }
 // function to strip a string of whitespace and make it lowercase (copied from Palindrome)
@@ -68,8 +94,8 @@ void getInput(int (& move)[2], char board[3][3]){
   char noMove[3] = "zz";
 
   while (hasMove == false){
-    move[0] = 0;
-    move[1] = 0;
+    move[0] = -1;
+    move[1] = -1;
     cout << "Enter your move (letter and number, no spaces. Ex: a1):";
     cin.getline(buffer,80);
     strip(buffer);
@@ -80,45 +106,57 @@ void getInput(int (& move)[2], char board[3][3]){
       single = buffer[i];
       switch(single){
       case '1':
-	move[1] = 1;
+	move[0] = 0;
 	break;
       case '2':
-	move[1] = 2;
-	break;
-      case '3':
-	move[1] = 3;
-	break;
-      case 'a':
 	move[0] = 1;
 	break;
-      case 'b':
+      case '3':
 	move[0] = 2;
 	break;
+      case 'a':
+	move[1] = 0;
+	break;
+      case 'b':
+	move[1] = 1;
+	break;
       case 'c':
-	move[0] = 3;
+	move[1] = 2;
 	break;
       }
     }
-    if (move[0] == 0 or move[1] == 0){
+    if (move[0] == -1 or move[1] == -1){
       cout << "Please enter a valid move (1 letter a-c and 1 number 1-3)" << endl;
     }else{
-      hasMove = true;
+      if (board[move[0]][move[1]] == '_'){
+	hasMove = true;
+      } else {
+	cout << "Move is Not valid" << endl;
+      }
     }
   }
 }
 
-
-
 int main(){
   char board[3][3] = {
-    {'_','_','_'},
+    {'X','O','_'},
     {'_','_','_'},
     {'_','_','_'}
   };
-  int move[2] = {0,0};
-  int player = 1;
-  
-  printGrid(board);
-  getInput(move);
-    
+  int move[2] = {-1,-1};
+  bool won = false;
+  char player = 'X';
+  while (!won){
+    for (int i = 1; i < 3; i++){
+      switch(i){
+      case 1:
+	player = 'X';
+	break;
+      case 2:
+	player = 'O'
+      }
+    }
+    printGrid(board);
+    getInput(move,board);
+  }
 }
