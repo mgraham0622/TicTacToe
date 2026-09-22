@@ -162,12 +162,15 @@ int main() {
 	char input = ' ';
 	int move[2] = {-1,-1};
 	int playerNum = 0;
+	int turns  = 0;
 	bool won = false;
+	bool tie = false;
 	bool hasInput = false;
 	bool playing = true;
 
 	while (playing) {
 		while (!won) {
+			turns++
 			if (player == 'O') {
 				player = 'X';
 				playerNum = 1;
@@ -182,8 +185,13 @@ int main() {
 			printGrid(board);
 			getInput(move,board,player);
 			won = checkWin(board,player);
+			if (turns == 9 and !won){
+				tie = true;
+			}
 		}
-		cout << dialogue2 << playerNum << dialogue3;
+		if (!tie){
+			cout << dialogue2 << playerNum << dialogue3;
+		}
 		hasInput = false;
 		while (!hasInput) {
 			cin >> input;
