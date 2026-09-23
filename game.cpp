@@ -159,9 +159,9 @@ int main() {
 	char dialogue3[25] = " wins! Play again?(y/n):";
 	char dialogue4[21] = "enter a valid input:";
 	char dialogue5[28] = "Tie Game! Play again?(y/n):";
-	char dialogue6[16] = "Player 1 Wins: "
-	char dialogue7[16] = "Player 2 Wins: "
-	char dialogue8[7] = "Ties: "
+	char dialogue6[16] = "Player 1 Wins: ";
+	char dialogue7[16] = "Player 2 Wins: ";
+	char dialogue8[7] = "Ties: ";
 	char player = '_';
 	char input = ' ';
 	int move[2] = {-1,-1};
@@ -177,7 +177,7 @@ int main() {
 
 	while (playing) {
 		while (!won) {
-			turns++
+			turns++;
 			if (player == 'O') {
 				player = 'X';
 				playerNum = 1;
@@ -192,18 +192,23 @@ int main() {
 			printGrid(board);
 			getInput(move,board,player);
 			won = checkWin(board,player);
-			if (turns == 9 and !won){
+			if (turns == 9 and !won) {
 				tie = true;
 				ties++;
 				won = true;
 			}
 		}
-		if (tie){
+		if (tie) {
 			cout << dialogue5;
+			tie = false;
 		} else {
 			cout << dialogue2 << playerNum << dialogue3;
-			if (playerNum == 1){p1Wins++;}
-			if (playerNum == 2)[p2Wins++;]
+			if (playerNum == 1) {
+				p1Wins++;
+			}
+			if (playerNum == 2) {
+				p2Wins++;
+			}
 		}
 		hasInput = false;
 		while (!hasInput) {
