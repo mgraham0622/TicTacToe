@@ -158,11 +158,18 @@ int main() {
 	char dialogue2[8] = "player ";
 	char dialogue3[25] = " wins! Play again?(y/n):";
 	char dialogue4[21] = "enter a valid input:";
+	char dialogue5[28] = "Tie Game! Play again?(y/n):";
+	char dialogue6[16] = "Player 1 Wins: "
+	char dialogue7[16] = "Player 2 Wins: "
+	char dialogue8[7] = "Ties: "
 	char player = '_';
 	char input = ' ';
 	int move[2] = {-1,-1};
 	int playerNum = 0;
 	int turns  = 0;
+	int p1Wins = 0;
+	int p2Wins = 0;
+	int ties = 0;
 	bool won = false;
 	bool tie = false;
 	bool hasInput = false;
@@ -187,10 +194,16 @@ int main() {
 			won = checkWin(board,player);
 			if (turns == 9 and !won){
 				tie = true;
+				ties++;
+				won = true;
 			}
 		}
-		if (!tie){
+		if (tie){
+			cout << dialogue5;
+		} else {
 			cout << dialogue2 << playerNum << dialogue3;
+			if (playerNum == 1){p1Wins++;}
+			if (playerNum == 2)[p2Wins++;]
 		}
 		hasInput = false;
 		while (!hasInput) {
@@ -203,6 +216,7 @@ int main() {
 						board[i][k] = '_';
 					}
 				}
+				turns = 0;
 				player = '_';
 				won = false;
 			} else if (tolower(input) == 'n') {
@@ -212,5 +226,8 @@ int main() {
 				cout << dialogue4;
 			}
 		}
+		cout << dialogue6 << p1Wins << endl;
+		cout << dialogue7 << p2Wins << endl;
+		cout << dialogue8 << ties << endl;
 	}
 }
